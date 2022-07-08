@@ -20,9 +20,9 @@ def disp_menu(products):
     """
     menu = ""
     for x in range(len(products)):
-        menu += str(x+1) + products[x][0] + "($"+str(products[x][1])+")"
+        menu += str(x+1)+". " + products[x][0] + " ($"+str(products[x][1])+")"+"\n"
 
-    return menu
+    print(menu)
 
 def get_product(products, selection):
      """
@@ -30,22 +30,37 @@ def get_product(products, selection):
         -
     Returns: String,
     """
+def get_selection():
 
-def is_select_valid(selection):
+    selection = int(input("> "))
+    return selection
+def is_select_valid(products):
     """
     Args: Integer, selection
         -
     Returns: Boolean
-    """
 
-    pass
-def get_num_product():
+    """
+    selection = get_selection()
+
+    if(0 < selection <= len(products)):
+        return True
+
+    else:
+        print("Im Sorry, thats not a Valid selection. Please Enter a selection from 1-4\n")
+        
+        return False
+
+
+
+def get_num_product(products, selection):
     """
     Args: 
         -
     Returns: Integer, Number of products
     """
-    pass
+    msg = 
+    num = int(input("How"))
 
 def display_receipt():
     """
@@ -62,6 +77,17 @@ def start_store(products):
     Returns: 
     """
     name = get_name()
+    disp_menu(products)
+    
+
+   
+    is_valid = is_select_valid(products)
+
+    while is_valid == False:
+        disp_menu(products)
+        is_valid = is_select_valid(products)
+
+       
     
 
 
