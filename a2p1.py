@@ -59,9 +59,15 @@ def get_num_product(products, selection):
         -
     Returns: Integer, Number of products
     """
-   
-    num = int(input("How many "+  products[selection-1][0]+"s would you like to purchase? "))
+    is_valid = False
+    while not is_valid:
+        num = int(input("How many "+  products[selection-1][0]+"s would you like to purchase? "))
+        is_valid = num > 0
+
+        if not is_valid:
+            print("Please enter a value greater than or equal to 0")
     return num
+
 def display_receipt():
     """
     Args: String, Product Integer, Number of product Intege, Cost
@@ -88,8 +94,10 @@ def start_store(products):
         selection = get_selection()
         is_valid = is_select_valid(products, selection)
 
-    num = get_num_product(products,selection)  
     
+    num = get_num_product(products,selection) 
+    # if num < 0
+    #     num = 
 
 
 if __name__ == "__main__":
