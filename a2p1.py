@@ -34,14 +34,14 @@ def get_selection():
 
     selection = int(input("> "))
     return selection
-def is_select_valid(products):
+def is_select_valid(products, selection):
     """
     Args: Integer, selection
         -
     Returns: Boolean
 
     """
-    selection = get_selection()
+
 
     if(0 < selection <= len(products)):
         return True
@@ -59,7 +59,7 @@ def get_num_product(products, selection):
         -
     Returns: Integer, Number of products
     """
-    msg = 
+    ##msg = 
     num = int(input("How"))
 
 def display_receipt():
@@ -80,12 +80,13 @@ def start_store(products):
     disp_menu(products)
     
 
-   
-    is_valid = is_select_valid(products)
+    selection = get_selection()
+    is_valid = is_select_valid(products,selection)
 
     while is_valid == False:
         disp_menu(products)
-        is_valid = is_select_valid(products)
+        selection = get_selection()
+        is_valid = is_select_valid(products, selection)
 
        
     
