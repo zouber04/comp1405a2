@@ -59,9 +59,9 @@ def get_num_product(products, selection):
         -
     Returns: Integer, Number of products
     """
-    ##msg = 
-    num = int(input("How"))
-
+   
+    num = int(input("How many "+  products[selection-1][0]+"s would you like to purchase? "))
+    return num
 def display_receipt():
     """
     Args: String, Product Integer, Number of product Intege, Cost
@@ -88,7 +88,7 @@ def start_store(products):
         selection = get_selection()
         is_valid = is_select_valid(products, selection)
 
-       
+    num = get_num_product(products,selection)  
     
 
 
