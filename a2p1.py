@@ -68,13 +68,24 @@ def get_num_product(products, selection):
             print("Please enter a value greater than or equal to 0")
     return num
 
-def display_receipt():
+def display_receipt(cust_name, num_product, product_name, product_price):
     """
     Args: String, Product Integer, Number of product Intege, Cost
         -
     Returns: None
     """
-    pass
+    
+    receipt = \
+    f"""
+    {cust_name}, here is your receipt: 
+    -----------------------------------
+    {num_product} {product_name}{"" if num_product == 1 else "s"}
+    -----------------------------------
+    Total cost: ${product_price*num_product:.2f}
+    Thank you, Have a nice day!
+    """
+
+    print(receipt)
 
 def start_store(products):
     """
@@ -96,8 +107,8 @@ def start_store(products):
 
     
     num = get_num_product(products,selection) 
-    # if num < 0
-    #     num = 
+    
+    display_receipt(name, num, products[selection-1][0],products[selection-1][1])
 
 
 if __name__ == "__main__":
