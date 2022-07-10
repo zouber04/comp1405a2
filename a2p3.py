@@ -58,7 +58,13 @@ def is_select_valid(products, selection):
         return True
     print("Im Sorry, thats not a Valid selection. Please Enter a selection from 1-4\n")
     return False
-
+def remove_inventory(item_index, products, num_items):
+    if num_items <= products[item_index][2]:
+        #products[item_index][2] -= num_items
+        products[item_index] = (products[item_index][0], products[item_index][1], products[item_index][2] - num_items)
+        return True
+    print(f"Sorry, we don't have that many {products[item_index][0]}")
+    return False
 def get_num_product(products, selection):
     """
     Get the number of a product, identified by the selection number, requested by the customer
@@ -71,12 +77,12 @@ def get_num_product(products, selection):
     #pdb.set_trace()
     is_valid = False
     while not is_valid:
-        num = int(input("How many "+  products[selection-1][0]+"s would you like to purchase? "))
-        is_valid = num > 0
+        num_item = int(input("How many "+  products[selection-1][0]+"s would you like to purchase? "))
+        is_valid = num_item > 0
 
         if not is_valid:
             print("Please enter a value greater than or equal to 0")
-    return num
+    return num_item
 
 def display_receipt(cust_name, cart, products):
     """
@@ -111,7 +117,13 @@ def display_receipt(cust_name, cart, products):
     print(receipt)
 
 
-
+def add_to_cart(cart,num_items,item_index,products):
+    if item_index in cart:
+            cart[item_index] += num_items
+            
+    else:
+        cart[item_index] = num_items
+    
 def start_store(products):
     """
     Starts the store interface
@@ -134,12 +146,11 @@ def start_store(products):
         if selection == len(products)+1:
             continue
         #pdb.set_trace()
-        num = get_num_product(products,selection)
-        if selection-1 in cart:
-            cart[selection-1] += num
-        else:
-            cart[selection-1] = num
-            
+        num_item = get_num_product(products,selection)
+
+        is_add = remove_inventory(selection-1, products, num_item)  
+        if is_add:
+            add_to_cart(cart,num_item,selection-1,products) 
         is_valid = False
 
 
