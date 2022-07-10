@@ -30,7 +30,7 @@ def disp_menu(products):
         if x == len(products):
             menu += str(x+1)+". " + "Complete Order\n"
         else:
-            menu += str(x+1)+". " + products[x][0] + " ($"+str(products[x][1])+")"+"\n"
+            menu += str(x+1)+". " + products[x][0] + " ($"+str(products[x][1])+", "+ str(products[x][2])+ " in stock"   +")"+"\n"
         
     print(menu)
 
